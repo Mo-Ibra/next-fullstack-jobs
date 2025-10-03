@@ -1,6 +1,6 @@
 // app/api/upload-public-logo/route.ts
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { supabaseAdmin } from "@/lib/supabase";
 
 export async function POST(request: Request) {
   try {
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
     const buffer = Buffer.from(arrayBuffer);
 
     // Upload to Supabase Storage
-    const { data, error } = await supabase.storage
+    const { data, error } = await supabaseAdmin.storage
       .from("company-logos")
       .upload(filePath, buffer, {
         contentType: file.type,
@@ -57,7 +57,7 @@ export async function POST(request: Request) {
     // Get public URL
     const {
       data: { publicUrl },
-    } = supabase.storage.from("company-logos").getPublicUrl(filePath);
+    } = supabaseAdmin.storage.from("company-logos").getPublicUrl(filePath);
 
     return NextResponse.json({ url: publicUrl });
   } catch (error) {
