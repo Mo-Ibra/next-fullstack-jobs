@@ -23,7 +23,7 @@ export async function PUT(
   try {
     const body = await request.json();
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from("jobs")
       .update(body)
       .eq("id", params.id)
@@ -62,6 +62,7 @@ export async function DELETE(
   }
 
   try {
+
     const { error } = await supabaseAdmin.from("jobs").delete().eq("id", params.id);
 
     if (error) {
