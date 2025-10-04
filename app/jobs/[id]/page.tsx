@@ -22,7 +22,6 @@ export default async function JobDetail({
 }: {
   params: { id: string };
 }) {
-
   const { id } = await params;
 
   const job = await getJob(id);
@@ -69,12 +68,36 @@ export default async function JobDetail({
                   {job.company}
                 </p>
 
-                <div className="flex flex-wrap gap-4 text-gray-600">
+                <div className="flex flex-wrap gap-3 mb-4 text-gray-600">
                   <span className="flex items-center">📍 {job.location}</span>
                   <span className="flex items-center">💼 {job.job_type}</span>
-                  {job.salary && (
+                  {job.salary_min && job.salary_max ? (
                     <span className="text-green-600 font-semibold">
-                      {job.salary}
+                      {new Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: job.salary_currency,
+                        maximumFractionDigits: 0,
+                      }).format(job.salary_min)}{" "}
+                      -{" "}
+                      {new Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: job.salary_currency,
+                        maximumFractionDigits: 0,
+                      }).format(job.salary_max)}
+                    </span>
+                  ) : (
+                    job.salary && (
+                      <span className="text-green-600 font-semibold">
+                        {job.salary}
+                      </span>
+                    )
+                  )}
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {job.visa_sponsorship && (
+                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                      ✈️ Visa Sponsorship Available
                     </span>
                   )}
                 </div>
@@ -82,7 +105,28 @@ export default async function JobDetail({
             </div>
           </div>
 
-          <div className="border-t border-gray-200 pt-6">
+          {job.required_languages && job.required_languages.length > 0 && (
+            <div className="border-t border-gray-200 pt-6">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                Language Requirements
+              </h2>
+              <div className="flex flex-wrap gap-3">
+                {job.required_languages.map((lang, index) => (
+                  <div
+                    key={index}
+                    className="bg-purple-50 border border-purple-200 rounded-lg px-4 py-2"
+                  >
+                    <p className="font-medium text-purple-900">
+                      {lang.language}
+                    </p>
+                    <p className="text-sm text-purple-700">{lang.level}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="border-t border-gray-200 pt-6 mt-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">
               Job Description
             </h2>

@@ -1,11 +1,11 @@
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
-import { supabaseAdmin, Job } from '@/lib/supabase'
+import { Job, supabaseAdmin } from '@/lib/supabase'
 import Link from 'next/link'
 import Image from 'next/image'
 import { SignOutButton } from "./signout-btn";
-import { DeleteButton } from './delete-btn';
-// import { ApproveRejectButtons } from './approve-reject-buttons'
+import { DeleteButton } from "./delete-btn";
+import { ApproveRejectButtons } from "./approve-reject-buttons";
 
 async function getJobs() {
   const { data, error } = await supabaseAdmin
@@ -172,6 +172,9 @@ export default async function AdminDashboard() {
                       {new Date(job.created_at).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      {job.status === 'pending' && (
+                        <ApproveRejectButtons jobId={job.id} />
+                      )}
                       <Link
                         href={`/admin/jobs/${job.id}/edit`}
                         className="text-blue-600 hover:text-blue-900 mr-4"

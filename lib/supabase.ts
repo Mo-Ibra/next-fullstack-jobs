@@ -16,6 +16,14 @@ export type Job = {
   location: string
   description: string
   salary: string | null
+  salary_min: number | null
+  salary_max: number | null
+  salary_currency: string
+  visa_sponsorship: boolean
+  required_languages: Array<{
+    language: string
+    level: 'Basic' | 'Intermediate' | 'Advanced' | 'Native'
+  }>
   job_type: string
   status: 'pending' | 'approved' | 'rejected'
   created_at: string
