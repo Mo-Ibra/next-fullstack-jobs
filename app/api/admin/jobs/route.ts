@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to fetch jobs" },
+      { error: "Failed to create job" },
       { status: 500 }
     );
   }

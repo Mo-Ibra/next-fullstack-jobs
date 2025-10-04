@@ -106,6 +106,7 @@ export function PublicJobForm() {
         visa_sponsorship: formData.get("visa_sponsorship") === "on",
         required_languages: validLanguages,
         job_type: formData.get("job_type") as string,
+        work_location_type: formData.get("work_location_type") as string,
         status: "pending",
       };
 
@@ -263,31 +264,51 @@ export function PublicJobForm() {
               type="text"
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="e.g. New York, NY (Remote)"
+              placeholder="e.g. New York, NY or Worldwide"
             />
           </div>
 
           <div>
             <label
-              htmlFor="job_type"
+              htmlFor="work_location_type"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Job Type *
+              Work Location Type *
             </label>
             <select
-              id="job_type"
-              name="job_type"
+              id="work_location_type"
+              name="work_location_type"
               required
-              defaultValue="Full-time"
+              defaultValue="on-site"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
-              <option value="Contract">Contract</option>
-              <option value="Freelance">Freelance</option>
-              <option value="Internship">Internship</option>
+              <option value="remote">🏠 Remote</option>
+              <option value="on-site">🏢 On-site</option>
+              <option value="hybrid">🔄 Hybrid</option>
             </select>
           </div>
+        </div>
+
+        <div>
+          <label
+            htmlFor="job_type"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Job Type *
+          </label>
+          <select
+            id="job_type"
+            name="job_type"
+            required
+            defaultValue="Full-time"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Contract">Contract</option>
+            <option value="Freelance">Freelance</option>
+            <option value="Internship">Internship</option>
+          </select>
         </div>
 
         <div>
