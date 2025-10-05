@@ -114,6 +114,7 @@ export function JobForm({ job }: JobFormProps) {
         job_type: formData.get("job_type") as string,
         work_location_type: formData.get("work_location_type") as string,
         status: formData.get("status") as string,
+        application_link: (formData.get("application_link") as string) || null,
       };
 
       console.log(jobData);
@@ -444,9 +445,23 @@ export function JobForm({ job }: JobFormProps) {
 
         <div>
           <label
-            htmlFor="status"
-            className="block text-xs text-gray-600 mb-1"
+            htmlFor="application_link"
+            className="block text-sm font-medium text-gray-700 mb-1"
           >
+            Job Link *
+          </label>
+          <input
+            id="application_link"
+            name="application_link"
+            required
+            defaultValue={job?.application_link}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Link to the job posting"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="status" className="block text-xs text-gray-600 mb-1">
             Status
           </label>
           <select

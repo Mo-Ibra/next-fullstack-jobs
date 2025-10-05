@@ -1,4 +1,3 @@
-// app/submit-job/public-job-form.tsx
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -108,6 +107,7 @@ export function PublicJobForm() {
         job_type: formData.get("job_type") as string,
         work_location_type: formData.get("work_location_type") as string,
         status: "pending",
+        application_link: (formData.get("application_link") as string) || null,
       };
 
       const res = await fetch("/api/public-jobs", {
@@ -466,6 +466,22 @@ export function PublicJobForm() {
             rows={10}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Describe the role, responsibilities, requirements, etc."
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="application_link"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Job Link *
+          </label>
+          <input
+            id="application_link"
+            name="application_link"
+            required
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Link to the job posting"
           />
         </div>
 

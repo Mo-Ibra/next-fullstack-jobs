@@ -11,8 +11,10 @@ export async function POST(request: Request) {
       !body.title ||
       !body.company ||
       !body.location ||
+      !body.work_location_type||
+      !body.job_type||
       !body.description ||
-      !body.job_type
+      !body.application_link
     ) {
       return NextResponse.json(
         { error: "Missing required fields" },

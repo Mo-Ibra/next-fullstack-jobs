@@ -27,5 +27,6 @@ export type Job = {
   job_type: string;
   work_location_type: "remote" | "on-site" | "hybrid";
   status: "pending" | "approved" | "rejected";
+  application_link: string;
   created_at: string;
 };

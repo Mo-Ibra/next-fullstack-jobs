@@ -101,6 +101,22 @@ export default async function JobDetail({
                     </span>
                   )}
                 </div>
+
+                {/* Application Link */}
+                {/* {job.application_link && (
+                  <a
+                    href={job.application_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-semibold transition-colors shadow-lg hover:shadow-xl"
+                  >
+                    Apply for this position
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                )} */}
+
               </div>
             </div>
           </div>
