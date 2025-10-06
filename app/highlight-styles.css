@@ -1,0 +1,72 @@
+@import "../styles/highlights/github-dark-min.css";
+
+.hljs {
+  @apply rounded-lg p-4 my-6 overflow-x-auto border border-gray-800;
+  direction: ltr;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', Consolas, Monaco, 'Courier New', monospace !important;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+:not(pre) > code {
+  @apply bg-muted text-primary px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+pre {
+  @apply relative my-6;
+}
+
+pre code {
+  font-family: inherit !important;
+}
+
+@media (max-width: 768px) {
+  .hljs {
+    @apply mx-4 text-xs;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .hljs {
+    background: #f6f8fa !important;
+    color: #24292e !important;
+    @apply border-gray-200;
+  }
+}
+
+.code-block-wrapper {
+  @apply relative;
+}
+
+.copy-button {
+  @apply absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white p-2 rounded text-xs transition-colors z-10 opacity-0;
+  transition: opacity 0.2s ease;
+}
+
+.code-block-wrapper:hover .copy-button {
+  @apply opacity-100;
+}
+
+.copy-button.copied {
+  @apply bg-green-600;
+}
+
+code, pre {
+  font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+blockquote {
+  @apply border-l-4 border-primary bg-muted/50 p-4 my-6 rounded-r;
+}
+
+table {
+  @apply w-full border-collapse border border-border my-6;
+}
+
+th, td {
+  @apply border border-border p-2 text-left;
+}
+
+th {
+  @apply bg-muted font-semibold;
+}

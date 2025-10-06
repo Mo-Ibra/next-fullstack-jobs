@@ -2,7 +2,11 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import html from "remark-html";
+// import html from "remark-html";
+import remarkRehype from "remark-rehype";
+import rehypeHighlight from "rehype-highlight";
+import rehypeStringify from "rehype-stringify";
+import remarkGfm from "remark-gfm";
 
 const postsDirectory = path.join(process.cwd(), "content/blog");
 
@@ -71,7 +75,20 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const { data, content } = matter(fileContents);
 
     // Convert markdown to HTML
-    const processedContent = await remark().use(html).process(content);
+    // const processedContent = await remark().use(html).process(content);
+
+    // Process Content with syntax highlighting
+    const processedContent = await remark()
+      // remark gfm
+      .use(remarkGfm)
+      // Convert markdown to HTML
+      .use(remarkRehype)
+      // Add syntax highlighting to code blocks
+      .use(rehypeHighlight)
+      // Convert to HTML string
+      .use(rehypeStringify)
+      .process(content);
+
     const contentHtml = processedContent.toString();
 
     return {

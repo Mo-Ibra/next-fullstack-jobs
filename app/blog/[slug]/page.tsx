@@ -128,7 +128,7 @@ export default async function BlogPost({
           {/* Content */}
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100">
             <div
-              className="single-post"
+              className="single-post prose prose-lg dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-p:leading-7 prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground prose-code:text-primary prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:before:content-none prose-code:after:content-none prose-blockquote:border-l-primary prose-blockquote:bg-muted/50 prose-blockquote:p-4 prose-blockquote:rounded-r prose-ul:text-muted-foreground prose-ol:text-muted-foreground prose-li:text-muted-foreground prose-hr:border-border prose-pre:p-0 prose-pre:bg-transparent"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>

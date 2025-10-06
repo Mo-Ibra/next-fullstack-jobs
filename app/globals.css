@@ -1,6 +1,8 @@
 @import "tailwindcss";
-@import "../styles/single-post-styles/single-post-styles.css";
 @import "tw-animate-css";
+
+@import "./highlight-styles.css";
+@import "../styles/single-post-styles/single-post-styles.css";
 
 @custom-variant dark (&:is(.dark *));
 
