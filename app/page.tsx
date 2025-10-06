@@ -49,10 +49,10 @@ export default async function Home() {
                 Post a Job
               </Link>
               <Link
-                href="/admin"
+                href="/blog"
                 className="text-sm text-gray-600 hover:text-gray-900 flex items-center px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors"
               >
-                Admin
+                Blog
               </Link>
             </div>
           </div>
@@ -362,9 +362,7 @@ export default async function Home() {
                         </p>
 
                         {job.application_link && (
-                          <button
-                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all inline-flex items-center gap-2 shadow-md hover:shadow-lg"
-                          >
+                          <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all inline-flex items-center gap-2 shadow-md hover:shadow-lg">
                             Apply Now
                             <svg
                               className="w-4 h-4"
