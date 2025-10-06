@@ -15,7 +15,6 @@ export default async function BlogPost({
 }: {
   params: { slug: string };
 }) {
-
   const { slug } = await params;
 
   const post = await getPostBySlug(slug);
@@ -129,18 +128,7 @@ export default async function BlogPost({
           {/* Content */}
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100">
             <div
-              className="prose prose-lg max-w-none
-                prose-headings:font-bold prose-headings:text-gray-900
-                prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
-                prose-p:text-gray-700 prose-p:leading-relaxed
-                prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
-                prose-strong:text-gray-900 prose-strong:font-bold
-                prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-                prose-pre:bg-gray-900 prose-pre:text-gray-100
-                prose-ul:list-disc prose-ol:list-decimal
-                prose-li:text-gray-700
-                prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-600
-                prose-img:rounded-xl prose-img:shadow-lg"
+              className="single-post"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>

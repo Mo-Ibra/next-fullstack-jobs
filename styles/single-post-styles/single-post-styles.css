@@ -1,0 +1,182 @@
+/* Single Post Styles */
+
+/* Heading */
+.single-post h1 {
+  @apply text-4xl md:text-5xl font-bold text-foreground mb-6 mt-8 leading-tight;
+}
+
+.single-post h2 {
+  @apply text-3xl md:text-4xl font-bold text-foreground mb-5 mt-7 leading-snug;
+}
+
+.single-post h3 {
+  @apply text-2xl md:text-3xl font-semibold text-foreground mb-4 mt-6 leading-snug;
+}
+
+.single-post h4 {
+  @apply text-xl md:text-2xl font-semibold text-foreground mb-4 mt-5 leading-snug;
+}
+
+.single-post h5 {
+  @apply text-lg md:text-xl font-medium text-foreground mb-3 mt-4;
+}
+
+.single-post h6 {
+  @apply text-base md:text-lg font-medium text-foreground mb-3 mt-4;
+}
+
+/* Paragraph */
+.single-post p {
+  @apply text-muted-foreground leading-7 md:leading-8 mb-6 text-base md:text-lg;
+}
+
+/* Links */
+.single-post a {
+  @apply text-primary underline decoration-2 underline-offset-2 hover:text-primary/80 transition-colors;
+}
+
+.single-post strong,
+.single-post b {
+  @apply font-bold text-foreground;
+}
+
+.single-post em,
+.single-post i {
+  @apply italic text-muted-foreground;
+}
+
+.single-post code:not(pre code) {
+  @apply bg-muted text-primary px-2 py-1 rounded text-sm font-mono border;
+}
+
+.single-post ul {
+  @apply list-disc list-inside mb-6 space-y-2 text-muted-foreground;
+}
+
+.single-post ol {
+  @apply list-decimal list-inside mb-6 space-y-2 text-muted-foreground;
+}
+
+.single-post li {
+  @apply leading-7 pl-2;
+}
+
+.single-post li::marker {
+  @apply text-primary;
+}
+
+/* Lists */
+.single-post ul ul,
+.single-post ol ol,
+.single-post ul ol,
+.single-post ol ul {
+  @apply mt-2 mb-0 mr-6;
+}
+
+.single-post blockquote {
+  @apply border-l-4 border-primary bg-muted/50 p-6 my-8 rounded-r-lg italic;
+}
+
+.single-post blockquote p {
+  @apply text-foreground mb-0 text-lg;
+}
+
+.single-post blockquote cite {
+  @apply text-muted-foreground text-sm not-italic block mt-4;
+}
+
+/* Horizontal Rule */
+.single-post hr {
+  @apply border-border my-12 border-t-2;
+}
+
+/* Tables */
+.single-post table {
+  @apply w-full border-collapse border border-border my-8 rounded-lg overflow-hidden;
+}
+
+.single-post th {
+  @apply bg-muted text-foreground font-semibold p-4 text-left border-b border-border;
+}
+
+.single-post td {
+  @apply p-4 border-b border-border text-muted-foreground;
+}
+
+.single-post tr:last-child td {
+  @apply border-b-0;
+}
+
+.single-post tr:hover {
+  @apply bg-muted/30;
+}
+
+/* Images */
+.single-post img {
+  @apply rounded-lg my-8 w-full h-auto border border-border shadow-lg;
+}
+
+.single-post figure {
+  @apply my-8;
+}
+
+.single-post figcaption {
+  @apply text-muted-foreground text-sm text-center mt-3 italic;
+}
+
+.single-post pre {
+  @apply my-8;
+}
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+  .single-post h1 {
+    @apply text-3xl leading-tight;
+  }
+  
+  .single-post h2 {
+    @apply text-2xl;
+  }
+  
+  .single-post h3 {
+    @apply text-xl;
+  }
+  
+  .single-post blockquote {
+    @apply p-4 mx-2;
+  }
+  
+  .single-post table {
+    @apply text-sm;
+  }
+  
+  .single-post th,
+  .single-post td {
+    @apply p-2;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .single-post {
+    @apply text-black;
+  }
+  
+  .single-post h1,
+  .single-post h2,
+  .single-post h3,
+  .single-post h4,
+  .single-post h5,
+  .single-post h6 {
+    @apply text-black;
+  }
+  
+  .single-post a {
+    @apply text-black no-underline;
+  }
+  
+  .single-post a::after {
+    content: " (" attr(href) ")";
+    @apply text-xs;
+  }
+}

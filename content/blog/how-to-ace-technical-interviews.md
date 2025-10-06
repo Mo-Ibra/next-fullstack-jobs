@@ -253,21 +253,21 @@ Show genuine interest:
 
 ## Common Mistakes to Avoid
 
-❌ Jumping to code without understanding the problem
-❌ Not asking clarifying questions
-❌ Ignoring edge cases
-❌ Writing messy, uncommented code
-❌ Getting defensive about feedback
-❌ Not testing your solution
-❌ Memorizing solutions without understanding them
+- ❌ Jumping to code without understanding the problem
+- ❌ Not asking clarifying questions
+- ❌ Ignoring edge cases
+- ❌ Writing messy, uncommented code
+- ❌ Getting defensive about feedback
+- ❌ Not testing your solution
+- ❌ Memorizing solutions without understanding them
 
 ## Final Tips
 
-✅ Practice consistently (30-60 minutes daily)
-✅ Mock interviews with friends or platforms like Pramp
-✅ Stay calm and confident
-✅ Be yourself - companies want to see the real you
-✅ Learn from rejections - they're part of the process
+- ✅ Practice consistently (30-60 minutes daily)
+- ✅ Mock interviews with friends or platforms like Pramp
+- ✅ Stay calm and confident
+- ✅ Be yourself - companies want to see the real you
+- ✅ Learn from rejections - they're part of the process
 
 ## Conclusion
 
