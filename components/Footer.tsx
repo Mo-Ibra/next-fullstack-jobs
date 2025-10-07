@@ -20,12 +20,6 @@ const Footer = () => {
             </p>
             <div className="flex gap-4 mt-2 justify-center md:justify-end">
               <Link
-                href="/admin"
-                className="text-sm hover:text-white transition-colors"
-              >
-                Admin
-              </Link>
-              <Link
                 href="/submit-job"
                 className="text-sm hover:text-white transition-colors"
               >
