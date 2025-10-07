@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with Full-Stack Development in 2025"
-date: "2025-01-15"
+date: "2025-01-1"
 author: "Sarah Johnson"
 excerpt: "A comprehensive guide to starting your journey as a full-stack developer, covering essential technologies and best practices."
 coverImage: "/images/blog/full-stack-guide.jpg"

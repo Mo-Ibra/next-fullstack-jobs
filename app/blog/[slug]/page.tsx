@@ -2,6 +2,8 @@ import { getPostBySlug, getAllSlugs } from "@/lib/blog";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import Footer from "@/components/Footer";
+import Navigation from "@/components/Navigation";
 
 export async function generateStaticParams() {
   const slugs = getAllSlugs();
@@ -25,40 +27,8 @@ export default async function BlogPost({
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-50">
-      {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <Link
-              href="/blog"
-              className="text-blue-600 hover:text-blue-700 flex items-center gap-2 font-semibold transition-colors group"
-            >
-              <svg
-                className="w-5 h-5 group-hover:-translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              Back to Blog
-            </Link>
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">FS</span>
-              </div>
-              <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Full-Stack Jobs
-              </span>
-            </Link>
-          </div>
-        </div>
-      </nav>
+
+      <Navigation />
 
       {/* Article */}
       <article className="py-12">
@@ -172,49 +142,7 @@ export default async function BlogPost({
         </div>
       </article>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-12 mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center gap-3 mb-4 md:mb-0">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">FS</span>
-              </div>
-              <div>
-                <h3 className="text-white font-bold text-lg">
-                  Full-Stack Jobs
-                </h3>
-                <p className="text-sm text-gray-400">Find Your Dream Role</p>
-              </div>
-            </div>
-            <div className="text-center md:text-right">
-              <p className="text-sm text-gray-400">
-                © 2025 Full-Stack Jobs. All rights reserved.
-              </p>
-              <div className="flex gap-4 mt-2 justify-center md:justify-end">
-                <Link
-                  href="/"
-                  className="text-sm hover:text-white transition-colors"
-                >
-                  Jobs
-                </Link>
-                <Link
-                  href="/blog"
-                  className="text-sm hover:text-white transition-colors"
-                >
-                  Blog
-                </Link>
-                <Link
-                  href="/admin"
-                  className="text-sm hover:text-white transition-colors"
-                >
-                  Admin
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

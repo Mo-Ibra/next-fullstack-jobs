@@ -3,9 +3,9 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import CTA from "@/components/Cta";
 import Navigation from "@/components/Navigation";
-import Features from "@/components/Features";
-import JobNotFound from "@/components/JobNotFound";
 import JobsSection from "@/components/JobsSection";
+import { getAllPosts } from "@/lib/blog";
+import LatestArticles from "@/components/LatestArticles";
 
 async function getJobs() {
   const { data, error } = await supabaseAdmin
@@ -29,6 +29,8 @@ export default async function Home() {
   ).length;
   const companies = new Set(jobs.map((j) => j.company)).size;
 
+  const blogPosts = getAllPosts();
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-50">
       {/* Navigation */}
@@ -42,6 +44,8 @@ export default async function Home() {
 
       {/* Jobs Section */}
       <JobsSection jobs={jobs} />
+
+      <LatestArticles posts={blogPosts} />
 
       {/* CTA Section */}
       <CTA />
