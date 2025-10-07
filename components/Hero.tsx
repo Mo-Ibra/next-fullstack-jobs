@@ -209,7 +209,7 @@ const Hero = ({ jobs, companies, remoteJobs }: HeroProps) => {
           >
             Discover Your Next
             <br />
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r bg-blue-600 bg-clip-text text-transparent">
               Full-Stack
             </span>{" "}
             <span className="relative inline-block">
@@ -261,7 +261,7 @@ const Hero = ({ jobs, companies, remoteJobs }: HeroProps) => {
             >
               <Link
                 href="#jobs"
-                className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-2xl shadow-blue-500/30 transition-all hover:shadow-blue-500/50 inline-flex items-center gap-2"
+                className="group bg-gradient-to-r bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-2xl shadow-blue-500/30 transition-all hover:shadow-blue-500/50 inline-flex items-center gap-2"
               >
                 Browse All Jobs
                 <svg

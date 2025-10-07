@@ -5,7 +5,7 @@ import CTA from "@/components/Cta";
 import Navigation from "@/components/Navigation";
 import Features from "@/components/Features";
 import JobNotFound from "@/components/JobNotFound";
-import JobCard from "@/components/JobCard";
+import JobsSection from "@/components/JobsSection";
 
 async function getJobs() {
   const { data, error } = await supabaseAdmin
@@ -38,32 +38,10 @@ export default async function Home() {
       <Hero jobs={jobs} companies={companies} remoteJobs={remoteJobs} />
 
       {/* Features Section */}
-      <Features />
+      {/* <Features /> */}
 
       {/* Jobs Section */}
-      <section id="jobs" className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-3">
-              Latest Opportunities
-            </h2>
-            <p className="text-lg text-gray-600">
-              {jobs.length} full-stack position{jobs.length !== 1 ? "s" : ""}{" "}
-              waiting for you
-            </p>
-          </div>
-
-          <div className="grid gap-6">
-            {jobs.length === 0 ? (
-              <JobNotFound />
-            ) : (
-              jobs.map((job, index) => (
-                <JobCard job={job} key={index} />
-              ))
-            )}
-          </div>
-        </div>
-      </section>
+      <JobsSection jobs={jobs} />
 
       {/* CTA Section */}
       <CTA />
