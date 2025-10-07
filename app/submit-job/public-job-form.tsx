@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, FormEvent, ChangeEvent } from "react";
+import { useState, FormEvent, ChangeEvent, useRef } from "react";
 import Image from "next/image";
 
 type LanguageRequirement = {
@@ -17,6 +17,8 @@ export function PublicJobForm() {
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [languages, setLanguages] = useState<LanguageRequirement[]>([]);
+
+  const editorRef = useRef<HTMLDivElement>(null);
 
   function handleLogoChange(e: ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -80,6 +82,8 @@ export function PublicJobForm() {
         logoUrl = url;
       }
 
+      const descriptionHtml = editorRef.current?.innerHTML || "";
+
       const formElement = e.target as HTMLFormElement;
       const formData = new FormData(formElement);
 
@@ -93,7 +97,7 @@ export function PublicJobForm() {
         company: formData.get("company") as string,
         company_logo: logoUrl,
         location: formData.get("location") as string,
-        description: formData.get("description") as string,
+        description: descriptionHtml,
         salary: (formData.get("salary") as string) || null,
         salary_min: formData.get("salary_min")
           ? parseInt(formData.get("salary_min") as string)
@@ -459,14 +463,46 @@ export function PublicJobForm() {
           >
             Job Description *
           </label>
-          <textarea
+
+          {/* Toolbar */}
+          <div className="flex gap-2 mb-2">
+            <button
+              type="button"
+              onClick={() => document.execCommand("bold")}
+              className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
+            >
+              <b>B</b>
+            </button>
+            <button
+              type="button"
+              onClick={() => document.execCommand("italic")}
+              className="px-2 py-1 border rounded text-sm hover:bg-gray-100 italic"
+            >
+              I
+            </button>
+            <button
+              type="button"
+              onClick={() => document.execCommand("insertUnorderedList")}
+              className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
+            >
+              • List
+            </button>
+            <button
+              type="button"
+              onClick={() => document.execCommand("insertOrderedList")}
+              className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
+            >
+              1. List
+            </button>
+          </div>
+
+          {/* Editable content area */}
+          <div
+            ref={editorRef}
             id="description"
-            name="description"
-            required
-            rows={10}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Describe the role, responsibilities, requirements, etc."
-          />
+            contentEditable
+            className="w-full min-h-[200px] border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+          ></div>
         </div>
 
         <div>

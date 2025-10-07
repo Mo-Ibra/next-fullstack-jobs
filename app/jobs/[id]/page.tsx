@@ -249,7 +249,10 @@ export default async function JobDetail({
               Job Description
             </h2>
             <div className="prose prose-lg max-w-none text-gray-700 whitespace-pre-wrap leading-relaxed">
-              {job.description}
+              <div
+                className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: job.description }}
+              ></div>
             </div>
           </div>
 
