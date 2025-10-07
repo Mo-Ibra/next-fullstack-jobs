@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useRef } from "react";
 
 interface JobFormProps {
   job?: Job;
@@ -26,6 +27,8 @@ export function JobForm({ job }: JobFormProps) {
   const [languages, setLanguages] = useState<LanguageRequirement[]>(
     job?.required_languages || []
   );
+
+  const editorRef = useRef<HTMLDivElement>(null);
 
   const handleLogoChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -88,6 +91,8 @@ export function JobForm({ job }: JobFormProps) {
       const formElement = e.target as HTMLFormElement;
       const formData = new FormData(formElement);
 
+      const descriptionHtml = editorRef.current?.innerHTML || "";
+
       console.log(formData);
 
       // Filter out empty languages
@@ -100,7 +105,7 @@ export function JobForm({ job }: JobFormProps) {
         company: formData.get("company") as string,
         company_logo: logoUrl,
         location: formData.get("location") as string,
-        description: formData.get("description") as string,
+        description: descriptionHtml,
         salary: (formData.get("salary") as string) || null,
         salary_min: formData.get("salary_min")
           ? parseInt(formData.get("salary_min") as string)
@@ -432,15 +437,47 @@ export function JobForm({ job }: JobFormProps) {
           >
             Job Description *
           </label>
-          <textarea
+
+          {/* Toolbar */}
+          <div className="flex gap-2 mb-2">
+            <button
+              type="button"
+              onClick={() => document.execCommand("bold")}
+              className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
+            >
+              <b>B</b>
+            </button>
+            <button
+              type="button"
+              onClick={() => document.execCommand("italic")}
+              className="px-2 py-1 border rounded text-sm hover:bg-gray-100 italic"
+            >
+              I
+            </button>
+            <button
+              type="button"
+              onClick={() => document.execCommand("insertUnorderedList")}
+              className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
+            >
+              • List
+            </button>
+            <button
+              type="button"
+              onClick={() => document.execCommand("insertOrderedList")}
+              className="px-2 py-1 border rounded text-sm hover:bg-gray-100"
+            >
+              1. List
+            </button>
+          </div>
+
+          {/* Editable area */}
+          <div
+            ref={editorRef}
             id="description"
-            name="description"
-            required
-            rows={10}
-            defaultValue={job?.description}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Describe the role, responsibilities, requirements, etc."
-          />
+            contentEditable
+            dangerouslySetInnerHTML={{ __html: job?.description || "" }}
+            className="w-full min-h-[200px] border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white prose prose-sm max-w-none"
+          ></div>
         </div>
 
         <div>
