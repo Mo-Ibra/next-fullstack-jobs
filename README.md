@@ -5,3 +5,4 @@
 - Write 10 very useful articles.
 - Fix colors issues
 - Fix date format issue
+- Fix SEO Issues
